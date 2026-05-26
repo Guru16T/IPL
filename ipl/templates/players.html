@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "includes/navbar.html" %}
+<div class="container">
+    <div class="row g-3 justify-content-center py-5">
+        <div class="text-center position-relative d-flex align-items-center justify-content-center">
+        <img src="../static/images/bowler.png" alt="" class="z-n1 player-img position-absolute top-0 start-0">
+        <img src="../static/images/player-Photoroom.png" alt="" class="z-n1 player-img position-absolute top-0 end-0">
+            <div class="stadium-card">
+                <img src="{{player.0.team.logo.url}}" width="80">
+                <p class="fs-1 fw-bold">{{player.0.team.team_name}}</p>
+            </div>
+        </div>
+
+        {% for players in player %}
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="player-card">
+                <div class="text-center">
+                    <img src="{{players.profile.url}}" alt="">
+                </div>
+                <div class="player-content">
+                    {% if players.nationality != "Indian" %}
+                    <div class="position-absolute top-0 end-0 translate-middle flight-img">
+                    <img src="../static/images/plane.png" alt="">
+                    </div>
+                    {% endif %}
+                    <div class="d-flex align-items-center justify-content-between fw-bold text-white">
+                        <p>{{players.player_name}}</p>
+                        <p>{{players.age}}</p>
+                    </div>
+                    <p class="fw-bold text-white">{{players.role}}</p>
+                    <p class="fw-bold text-white">{{players.nationality}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

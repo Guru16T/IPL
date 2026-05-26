@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include "includes/navbar.html" %}
+
+
+
+<div class="container">
+    <div class="row justify-content-center align-items-center position-relative pt-5 mt-5">
+        <div class="team-card-container">
+
+            <!-- Left Arrow -->
+            <div class="arrow-bg arrow-left" id="prevBtn">
+                <i class="bi bi-chevron-left"></i>
+            </div>
+
+            <!-- Right Arrow -->
+            <div class="arrow-bg arrow-right" id="nextBtn">
+                <i class="bi bi-chevron-right"></i>
+            </div>
+
+            <!-- Slider -->
+            <div class="team-slider" id="teamSlider">
+
+                {% for team in teams %}
+                <div class="team-card" data-bs-toggle="modal" data-bs-target="#homeModal"
+                    data-team-name="{{team.team_name}}" data-team-logo="{{team.logo.url}}"
+                    data-team-bg="{{team.bg_img.url}}" data-team-id="{% url 'ipl:team_players' team.id %}">
+                    <div class="team-num">{{team.id}}</div>
+
+                    <div class="team-card-bg" style="background-image: url('{{team.bg_img.url}}');">
+
+                        <img src="{{team.logo.url}}" class="team-logo" alt="">
+
+                        <p class="team-name mt-3">
+                            {{team.team_name}}
+                        </p>
+                        <p class="team-content">
+                            Captain : {{team.captain}}
+                        </p>
+                        <p class="team-content">
+                            Coach : {{team.coach}}
+                        </p>
+                        <p class="team-content">
+                            Ground : {{team.home_ground}}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="d-flex align-items-center mt-5">
+        <p class="fs-5 fw-bold text-white ms-auto m-0">IF YOU WANT TO START THE MATCH</p>
+        <a href="{% url 'ipl:generate_ipl' %}" class="match-btn">Start Match</a>
+    </div>
+</div>
+
+<div class="modal fade" id="homeModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4" id="modalBg">
+            <div class="modal-header border-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="teamLogo" alt="" class="modal-img">
+                <p id="teamName" class="fs-1 fw-bold text-white"></p>
+            </div>
+            <div class="modal-footer border-0">
+                <p class="fw-bold text-white">IF YOU WANT TO EXPLORE THE TEAM</p>
+                <a id="team_id" class="text-decoration-none">
+                    <button type="button" class="match-btn border-0">Explore</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    const slider = document.getElementById("teamSlider");
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+
+    slider.innerHTML += slider.innerHTML;
+
+    const cards = document.querySelectorAll(".team-card");
+
+    let currentIndex = 0;
+
+    function moveSlider() {
+
+        const cardWidth =
+            cards[0].offsetWidth + 15;
+
+        slider.style.transition =
+            "transform 0.5s ease-in-out";
+
+        slider.style.transform =
+            `translateX(-${currentIndex * cardWidth}px)`;
+
+    }
+
+    /* NEXT */
+    nextBtn.addEventListener("click", () => {
+
+        currentIndex++;
+
+        moveSlider();
+
+        /* Reset smoothly */
+        if (currentIndex >= cards.length / 2) {
+
+            setTimeout(() => {
+
+                slider.style.transition = "none";
+
+                currentIndex = 0;
+
+                const cardWidth =
+                    cards[0].offsetWidth + 15;
+
+                slider.style.transform =
+                    `translateX(0px)`;
+
+            }, 500);
+
+        }
+
+    });
+
+    /* PREVIOUS */
+    prevBtn.addEventListener("click", () => {
+
+        if (currentIndex <= 0) {
+
+            slider.style.transition = "none";
+
+            currentIndex = cards.length / 2;
+
+            const cardWidth =
+                cards[0].offsetWidth + 15;
+
+            slider.style.transform =
+                `translateX(-${currentIndex * cardWidth}px)`;
+
+        }
+
+        setTimeout(() => {
+
+            currentIndex--;
+
+            moveSlider();
+
+        }, 20);
+
+    });
+
+</script>
+
+{% endblock %}

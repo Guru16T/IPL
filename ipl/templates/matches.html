@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include "includes/navbar.html" %}
+
+<div class="container">
+    <div class="row g-3 py-5 justify-content-center">
+
+        
+        {% for match in matches %}
+        {% if match.stage != "Final" and match.stage != "Qualifier 1" and  match.stage != "Qualifier 2" and match.stage != "Eliminator" %}
+
+        <div class="col-12 col-md-6 col-lg-4">
+
+            <a href="{% url 'ipl:match_details' match.id %}" class="text-decoration-none text-dark">
+                <div class="schedule-card p-3 rounded-4">
+
+                    <!-- MATCH HEADER -->
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+
+                        <p class="fw-bold m-0">
+                            Match {{ forloop.counter }}
+                        </p>
+
+                        <!-- <span class="badge bg-success">
+                        {{ match.status }}
+                    </span> -->
+
+                    </div>
+
+                    <!-- TEAM 1 -->
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+
+                        <div class="d-flex align-items-center gap-2">
+
+                            <img src="{{ match.team1.logo.url }}" class="match-logo">
+
+                            <p class="m-0 fw-semibold">
+                                {{ match.team1.team_name }}
+                            </p>
+
+                        </div>
+
+                        <!-- TEAM 1 SCORE -->
+                        {% for score in match.scores.all %}
+
+                        {% if score.batting_team == match.team1 %}
+
+                        <div>
+
+                            <strong>
+                                {{ score.runs }}/{{ score.wickets }}
+                            </strong>
+
+                            <small>
+                                ({{ score.overs }})
+                            </small>
+
+                        </div>
+
+                        {% endif %}
+
+                        {% endfor %}
+
+                    </div>
+
+                    <!-- TEAM 2 -->
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+
+                        <div class="d-flex align-items-center gap-2">
+
+                            <img src="{{ match.team2.logo.url }}" class="match-logo">
+
+                            <p class="m-0 fw-semibold">
+                                {{ match.team2.team_name }}
+                            </p>
+
+                        </div>
+
+                        <!-- TEAM 2 SCORE -->
+                        {% for score in match.scores.all %}
+
+                        {% if score.batting_team == match.team2 %}
+
+                        <div>
+
+                            <strong>
+                                {{ score.runs }}/{{ score.wickets }}
+                            </strong>
+
+                            <small>
+                                ({{ score.overs }})
+                            </small>
+
+                        </div>
+
+                        {% endif %}
+
+                        {% endfor %}
+
+                    </div>
+
+                    <!-- VENUE -->
+                    <p class="mb-2">
+
+                        <i class="bi bi-geo-alt-fill"></i>
+
+                        {{ match.venue }}
+
+                    </p>
+
+                    <!-- DATE -->
+                    {% comment %} <p class="mb-2">
+
+                        <i class="bi bi-calendar-check-fill"></i>
+
+                        {{ match.match_date }}
+
+                    </p> {% endcomment %}
+
+                    <!-- WINNER -->
+                    {% if match.winner %}
+
+                    <p class="fw-bold mb-0">
+
+                        <i class="bi bi-trophy-fill text-warning"></i>
+
+                        {{ match.winner.team_name }} won the match
+
+                    </p>
+
+                    {% elif match.status == "Abandoned" %}
+
+                    <p class="text-danger fw-bold mb-0">
+
+                        Match Abandoned
+
+                    </p>
+
+                    {% endif %}
+
+                </div>
+            </a>
+
+        </div>
+        {% endif %}
+
+        {% endfor %}
+
+    </div>
+    <div class="d-flex align-items-center mb-5">
+        <p class="fs-5 fw-bold text-white ms-auto m-0">GO TO PLAYOFFS</p>
+        <a href="{% url 'ipl:qualified_teams' %}" class="match-btn">Playoffs</a>
+    </div>
+</div>
+
+{% endblock %}

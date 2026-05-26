@@ -1,0 +1,833 @@
+:root {
+    --heading-color: blue;
+    --txt-white: white;
+    --txt-black: black;
+}
+
+body {
+    background-color: #0f1735 !important;
+}
+
+/* Navbar */
+
+.nav-logo {
+    width: auto;
+    height: 50px;
+}
+
+.nav-bg {
+    background: linear-gradient(145deg, #0f1735, #1b295c);
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.nav-item a {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+}
+
+.nav-item:hover a,
+.nav-item.active a {
+    color: white;
+}
+
+.nav-design {
+    position: relative;
+}
+
+.nav-design::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(145deg,
+            #2563eb,
+            #2564eb67);
+    height: 4px;
+    width: 0%;
+    border-radius: 20px;
+    transition: 0.3s ease;
+    transform: translateX(60%);
+}
+
+
+.nav-design:hover::before {
+    width: 100%;
+    transform: translateX(0);
+}
+
+.nav-design.active::before {
+    width: 100%;
+    transform: translateX(0);
+}
+
+
+/* Team */
+
+.team-logo {
+    width: 70px;
+    height: auto;
+}
+
+.team-card-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.team-slider {
+    display: flex;
+    gap: 15px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.arrow-bg {
+    width: 25px;
+    height: 80px;
+    font-size: 22px;
+    color: white;
+    background-color: rgba(128, 128, 128, 0.678);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: 0.3s ease;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.arrow-bg:hover {
+    background-color: gray;
+}
+
+.arrow-left {
+    left: 10px;
+}
+
+.arrow-right {
+    right: 10px;
+}
+
+.team-card {
+    width: 300px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    position: relative;
+}
+
+.team-num {
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+    font-size: 90px;
+    font-weight: 900;
+    position: absolute;
+    bottom: -25px;
+    right: 0;
+    transition: 0.3s ease;
+}
+
+
+.team-card-bg {
+    background-size: cover;
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    height: 350px;
+}
+
+.team-card-bg:hover {
+    cursor: pointer;
+}
+
+.team-card:hover .team-num {
+    color: black;
+    animation: numBouns 1.5s ease infinite;
+}
+
+@keyframes numBouns {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.team-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+}
+
+.team-content {
+    font-size: 17px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.team-card-sm {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    border: 2px solid white;
+    transition: 0.5s ease;
+}
+
+.team-card-sm:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+.team-card-sm img {
+    transition: 0.3s ease;
+}
+
+.team-card-sm:hover img {
+    transform: scale(0.9);
+}
+
+.modal-img{
+    width: 100px;
+    height: auto;
+}
+
+.match-btn {
+    position: relative;
+    padding: 10px 40px;
+    text-decoration: none;
+    background-color: #0b5ed7;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    transition: 0.5s ease;
+}
+
+.match-btn:hover::after {
+    content: "";
+    position: absolute;
+    background: linear-gradient(145deg,
+            #0f172a,
+            #2563eb);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    animation: matchBtn 0.5s ease;
+}
+
+.match-btn:hover::before {
+    content: "";
+    position: absolute;
+    background: linear-gradient(145deg,
+            #2563eb,
+            #0f172a);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    animation: matchBtn 0.5s ease;
+}
+
+.match-btn:hover {
+    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+}
+
+@keyframes matchBtn {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+
+/* Player */
+
+.player-card {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.player-card {
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.player-card img {
+    width: 80%;
+    height: 250px;
+
+    object-fit: cover;
+    object-position: top;
+
+    transition: transform 0.5s ease;
+
+    transform: translateY(15px);
+
+    position: relative;
+    z-index: 1;
+}
+
+.player-content {
+    position: relative;
+
+    margin-top: -60px;
+
+    padding: 20px;
+
+    border-radius: 22px;
+
+    background: linear-gradient(145deg,
+            #0f172a,
+            #2563eb);
+
+    color: white;
+
+    border-left: 5px solid #60a5fa;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.25);
+
+    z-index: 5;
+}
+
+.player-card:hover img {
+    transform: translateY(0);
+}
+
+.player-card:hover {
+    transform: scale(1.02);
+}
+
+.player-img {
+    width: 20%;
+    height: auto;
+}
+
+.flight-img img {
+    width: 30px;
+    height: auto;
+    transform: rotate(40deg);
+}
+
+/* .player-card:hover .flight-img img{
+    animation: flightGo 2s ease;
+    transform: rotate(40deg) translateY(-50px);
+} */
+
+/* @keyframes flightGo{
+    0%{
+        transform: rotate(40deg) translate(0, 0);
+    }
+    25%{
+        transform: rotate(40deg) translate(0px, -150px);
+    }
+    50%{
+        transform: rotate(-90deg) translate(100px, -150px);
+    }
+    75%{
+        transform: rotate(-180deg) translate(0, -150px);
+    }
+    100%{
+        transform: rotate(40deg) translate(0, 0);
+    }
+} */
+
+.flight-icon {
+    width: 20px;
+    height: auto;
+    transform: rotate(30deg);
+}
+
+.stadium-card {
+    background: linear-gradient(145deg,
+            #0f172a,
+            #2563eb);
+    padding: 40px;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.stadium-card::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.1);
+    bottom: -50px;
+    right: -50px;
+    border-radius: 50%;
+    animation: floatGlow 6s infinite ease-in-out;
+}
+
+.stadium-card::before {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.08);
+    top: -80px;
+    left: -80px;
+    border-radius: 50%;
+    animation: floatGlow 6s infinite ease-in-out;
+}
+
+@keyframes floatGlow {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(40px, 30px) scale(1.2);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+/* Matches */
+
+.schedule-card {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #2563eb, #dffaff, white);
+    color: #1f2937;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s ease;
+}
+
+.schedule-card::before {
+    content: "";
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    background: radial-gradient(circle,
+            rgba(255, 255, 255, 0.7),
+            transparent 70%);
+
+    top: -80px;
+    left: -80px;
+
+    animation: floatingGlow 4s infinite linear;
+}
+
+.schedule-card:hover {
+    transform: translateY(-8px);
+}
+
+@keyframes floatingGlow {
+
+    0% {
+        transform: translate(0px, 0px);
+    }
+
+    25% {
+        transform: translate(120px, 40px);
+    }
+
+    50% {
+        transform: translate(180px, 120px);
+    }
+
+    75% {
+        transform: translate(60px, 180px);
+    }
+
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+.schedule-card * {
+    position: relative;
+    z-index: 2;
+}
+
+.match-logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+
+    background: white;
+    padding: 3px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table */
+
+.table-logo {
+    width: 30px;
+    height: auto;
+}
+
+.score-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.sc-bg {
+    background-color: rgba(255, 255, 255, 0.459);
+}
+
+/* #table-header {
+    background-color: #19398a;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#table-body {
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+    border-radius: 20px;
+} */
+
+/* TABLE */
+.points-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 14px;
+}
+
+/* HEADER */
+.points-table thead tr {
+    background: linear-gradient(135deg, #19398a, #0b5ed7);
+    height: 65px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.points-table th {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.points-table th:first-child {
+    border-top-left-radius: 18px;
+    border-bottom-left-radius: 18px;
+}
+
+.points-table th:last-child {
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+}
+
+/* BODY ROW */
+.table-row {
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.table-row td {
+    padding: 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+}
+
+/* HOVER EFFECT */
+.table-row:hover {
+    transform: scale(1.02);
+}
+
+/* ROUNDED CORNERS */
+.table-row td:first-child {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.table-row td:last-child {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+/* TEAM LOGO */
+.table-logo {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: white;
+    padding: 5px;
+}
+
+/* Qualify Design */
+
+.qua-design {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.qua-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.qua-img img {
+    width: 80%;
+    height: auto;
+}
+
+.qua-content {
+    border-radius: 10px;
+    width: 100%;
+    height: 65px;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    padding: 0 10px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.qua-name {
+    background: linear-gradient(145deg, #0f1735, blue);
+    width: 88%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.trophy-img {
+    width: 50%;
+    height: auto;
+    transform: translateY(8px);
+}
+
+.playoff-wrapper {
+    position: relative;
+}
+
+.qua-design {
+    width: 220px;
+    height: 70px;
+    background: #1d1d1d;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* -----------------------------
+   QUALIFIER 1 → FINAL
+------------------------------*/
+
+.q1-block::after {
+    content: "";
+    position: absolute;
+    bottom: 45%;
+    right: -60%;
+    width: 251px;
+    height: 2px;
+    background: #fff;
+}
+
+/* vertical line */
+.q1-block::before {
+    content: "";
+    position: absolute;
+    top: 55%;
+    right: -60%;
+    width: 2px;
+    height: 140px;
+    background: #fff;
+}
+
+/* -----------------------------
+   ELIMINATOR → QUALIFIER 2
+------------------------------*/
+
+.elim-block::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    width: 50px;
+    height: 2px;
+    background: #fff;
+}
+
+/* -----------------------------
+   QUALIFIER 2 → FINAL
+------------------------------*/
+
+.q2-block::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -58%;
+    width: 245px;
+    height: 2px;
+    background: #fff;
+}
+
+.q2-block::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    right: -220px;
+    width: 2px;
+    height: 150px;
+    background: #fff;
+}
+
+.f-block::before {
+    content: "";
+    position: absolute;
+    bottom: 50%;
+    left: -106%;
+    width: 427px;
+    height: 2px;
+    background: #fff;
+}
+
+/* Crackers */
+
+.firework {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.firework2{
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.firework::before,
+.firework::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.firework2::before,
+.firework2::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.firework::before {
+    animation: sparks1 1.5s infinite;
+}
+
+.firework::after {
+    animation: sparks2 1.5s infinite;
+}
+
+.firework2::before {
+    animation: sparks1 1.5s infinite;
+}
+
+.firework2::after {
+    animation: sparks2 1.5s infinite;
+}
+
+@keyframes sparks1 {
+    0% {
+        box-shadow:
+            0 0 red,
+            0 0 blue,
+            0 0 green,
+            0 0 yellow;
+    }
+
+    100% {
+        box-shadow:
+            100px 0 red,
+            -100px 0 blue,
+            0 100px green,
+            0 -100px yellow;
+    }
+}
+
+@keyframes sparks2 {
+    0% {
+        box-shadow:
+            0 0 cyan,
+            0 0 orange,
+            0 0 pink,
+            0 0 white;
+    }
+
+    100% {
+        box-shadow:
+            70px 70px cyan,
+            -70px -70px orange,
+            -70px 70px pink,
+            70px -70px white;
+    }
+}

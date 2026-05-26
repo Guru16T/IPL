@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row align-items-center justify-content-center" style="height: 100vh;">
+        <div class="col-12 col-md-10 col-lg-5 bg-light rounded-4 p-4">
+            <p class="fs-4 fw-bold">Add Player</p>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    <label for="" class="form-label">Player Name</label>
+                    <input type="text" class="form-control" name="player_name" id="player_name">
+                </div>
+                <div>
+                    <label for="" class="form-label">Age</label>
+                    <input type="number" class="form-control" name="age" id="age">
+                </div>
+                <div>
+                    <label for="" class="form-label">Role</label>
+                    <select name="role" id="role" class="form-select">
+                        <option value="Batter">Batter</option>
+                        <option value="Bowler">Bowler</option>
+                        <option value="All Rounder">All Rounder</option>
+                        <option value="Wicket Keeper, Batter">Wicket Keeper, Batter</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="" class="form-label">Nationality</label>
+                    <input type="text" class="form-control" name="nationality" id="nationality">
+                </div>
+                <div>
+                    <label for="" class="form-label">Profile</label>
+                    <input type="file" class="form-control" name="profile" id="profile">
+                </div>
+                <div>
+                    <label for="" class="form-label">Team</label>
+                    <select name="team" id="team" class="form-select">
+                        {% for team in teams %}
+                        <option value="{{team.id}}">{{team.team_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

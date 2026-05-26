@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "includes/navbar.html" %}
+
+<!-- TROPHY -->
+<div class="container">
+    <div class="row align-items-center justify-content-center py-3">
+        <div class="col-3">
+            <div class="firework2 float-end"></div>
+        </div>
+        <div class="col-6">
+            <div class="firework"></div>
+            <div class="firework float-end"></div>
+            <div class="text-center">
+                <div class="fs-1 fw-bold text-white">TATA IPL 2026 CHAMPIONS</div>
+                <p class="fs-5 text-white fw-bold">Champions aren’t born in finals they’re built <br> through every
+                    battle.</p>
+                <img src="../static/images/trophy.png" alt="" class="trophy-img">
+
+                <br>
+                <div class="rounded-4 p-4"
+                    style="background-image: url('{{final.winner.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+
+                    <img src="{{final.winner.logo.url}}" alt="" class="team-logo">
+                    <p class="text-white fs-1 fw-bold">
+                        {{ final.winner.team_name }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="firework2"></div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

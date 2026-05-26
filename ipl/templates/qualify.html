@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "includes/navbar.html" %}
+
+<div class="container py-5 playoff-wrapper">
+    <div class="row align-items-center">
+
+        <!-- QUALIFIER 1 -->
+        <div class="col-4 position-relative q1-block">
+            <div class="d-flex flex-column align-items-center gap-3">
+
+                <!-- TEAM 1 -->
+                <div class="qua-design">
+                    <div class="qua-img" style="background-image: url('{{qualifier1.team1.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+                        <img src="{{ qualifier1.team1.logo.url }}" alt="">
+                    </div>
+                    <div class="qua-content" style="background-image: url('{{qualifier1.team1.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+                        {{ qualifier1.team1.team_name }}
+                    </div>
+                </div>
+
+                <div class="qua-name">
+                    QUALIFIER 1
+                </div>
+
+                <!-- TEAM 2 -->
+                <div class="qua-design">
+                    <div class="qua-img" style="background-image: url('{{qualifier1.team2.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+                        <img src="{{ qualifier1.team2.logo.url }}" alt="">
+                    </div>
+                    <div class="qua-content" style="background-image: url('{{qualifier1.team2.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+                        {{ qualifier1.team2.team_name }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-4"></div>
+
+        <!-- FINAL -->
+        <div class="col-4 position-relative final-block f-block">
+            <div class="d-flex flex-column align-items-center gap-3">
+
+                <!-- FINAL TEAM 1 -->
+                <div class="qua-design">
+                    <div class="qua-img" style="background-image: url('{{final.team1.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+                        <img src="{{ final.team1.logo.url }}" alt="">
+                    </div>
+                    <div class="qua-content" style="background-image: url('{{final.team1.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+                        {{ final.team1.team_name }}
+                    </div>
+                </div>
+
+                <div class="qua-name">
+                    FINAL
+                </div>
+
+                <!-- FINAL TEAM 2 -->
+                <div class="qua-design">
+                    <div class="qua-img" style="background-image: url('{{final.team2.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+                        <img src="{{ final.team2.logo.url }}" alt="">
+                    </div>
+                    <div class="qua-content" style="background-image: url('{{final.team2.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+                        {{ final.team2.team_name }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ELIMINATOR -->
+        <div class="col-4 position-relative elim-block mt-5">
+            <div class="d-flex flex-column align-items-center gap-3">
+
+                <!-- ELIMINATOR TEAM 1 -->
+                <div class="qua-design">
+                    <div class="qua-img" style="background-image: url('{{eliminator.team1.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+                        <img src="{{ eliminator.team1.logo.url }}" alt="">
+                    </div>
+                    <div class="qua-content" style="background-image: url('{{eliminator.team1.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+                        {{ eliminator.team1.team_name }}
+                    </div>
+                </div>
+
+                <div class="qua-name">
+                    ELIMINATOR
+                </div>
+
+                <!-- ELIMINATOR TEAM 2 -->
+                <div class="qua-design">
+                    <div class="qua-img" style="background-image: url('{{eliminator.team2.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+                        <img src="{{ eliminator.team2.logo.url }}" alt="">
+                    </div>
+                    <div class="qua-content" style="background-image: url('{{eliminator.team2.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+                        {{ eliminator.team2.team_name }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- QUALIFIER 2 -->
+        <div class="col-4 position-relative q2-block mt-5">
+            <div class="d-flex flex-column align-items-center gap-3">
+
+                <!-- QUALIFIER 2 TEAM 1 -->
+                <div class="qua-design">
+                    <div class="qua-img" style="background-image: url('{{qualifier2.team1.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+                        <img src="{{ qualifier2.team1.logo.url }}" alt="">
+                    </div>
+                    <div class="qua-content" style="background-image: url('{{qualifier2.team1.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+                        {{ qualifier2.team1.team_name }}
+                    </div>
+                </div>
+
+                <div class="qua-name">
+                    QUALIFIER 2
+                </div>
+
+                <!-- QUALIFIER 2 TEAM 2 -->
+                <div class="qua-design">
+                    <div class="qua-img" style="background-image: url('{{qualifier2.team2.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+                        <img src="{{ qualifier2.team2.logo.url }}" alt="">
+                    </div>
+                    <div class="qua-content" style="background-image: url('{{qualifier2.team2.bg_img.url}}'); background-repeat: no-repeat; background-size: cover;">
+                        {{ qualifier2.team2.team_name }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="d-flex align-items-center mt-5">
+        <p class="fs-5 fw-bold text-white ms-auto m-0">AND THE WINNER IS</p>
+        <a href="{% url 'ipl:winner' %}" class="match-btn">Winner</a>
+    </div>
+</div>
+
+{% endblock %}

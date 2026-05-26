@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include "includes/navbar.html" %}
+
+<div class="container py-5">
+    <div class="row justify-content-center align-items-center py-5 my-5">
+        <div class="col-12">
+            <div class="text-white display-6 text-center">
+                The Indian Premier League (IPL) is the biggest T20 cricket league in the world. It started in 2008 and
+                is organized by the Board of Control for Cricket in India.
+            </div>
+            <div class="row justify-content-center">
+                {% for team in teams %}
+                <div class="col-4 col-md-3 col-lg-1 g-3">
+                    <a href="{% url 'ipl:team_players' team.id %}" class="text-decoration-none">
+                        <div class="team-card-sm" style="background-image: url('{{team.bg_img.url}}');">
+                            <img src="{{team.logo.url}}" alt="">
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
